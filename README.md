@@ -75,3 +75,13 @@ Core programming concepts and problem-solving skills.
 - `MenuDriven.py` - Menu-driven application interface
 - `StudentManagement.py` - Complete student management system
 - `records.txt` - Progress tracking
+
+### Week-3: Frontend Development (HTML/CSS)
+
+**Day-1: HTML Basics**
+- `index.html` - Basic HTML page structure
+
+**Day-2: HTML Forms**
+- `form.html` - HTML form creation and elements
+
+**Day-3 to Day-7:** Upcoming frontend topics
