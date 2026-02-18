@@ -249,3 +249,80 @@ StudentManagement.py
 
 Expected Outcome: Integrate multiple Python concepts into one comprehensive system.
 Actual Outcome: Developed a complete and structured student management solution.
+
+Week-3: Frontend Development
+
+Focus: HTML, CSS, JavaScript Basics
+Objective: Learn to design user-friendly web pages and prepare UI for project integration.
+
+Day-1: Introduction to HTML
+index.html – Basic Web Page Structure
+
+• Created web page with heading, paragraph, image, and link
+• Added ordered and unordered lists
+• Created student details table
+
+Expected Outcome: Develop understanding of HTML structure, semantic elements, and basic content formatting.
+Actual Outcome: Successfully built a structured webpage with properly organized elements including lists, images, links, and tables.
+
+Day-2: Forms & Input Elements
+form.html – Registration Form
+
+• Created registration form (Name, Email, Phone, Password, Gender)
+• Used proper labels and input types
+
+Expected Outcome: Design structured and user-friendly forms using appropriate input types and labels.
+Actual Outcome: Developed a fully functional registration form with correct input validation types and well-aligned form elements.
+
+Day-3: CSS Basics
+style.css – Styling & Design
+
+• Applied background colors
+• Implemented font styling
+• Used border, margin, and padding
+• Styled buttons
+
+Expected Outcome: Apply CSS styling techniques to enhance visual presentation and layout design.
+Actual Outcome: Successfully styled webpages using CSS properties, improving layout structure and visual appeal.
+
+Day-4: Layout Design
+layout.html – Page Layout Structure
+
+• Created header, navbar, content section, and footer using div
+• Applied box model concepts
+
+Expected Outcome: Understand webpage layout structuring using div elements and box model properties.
+Actual Outcome: Designed a clean and organized webpage layout with proper spacing, alignment, and structural division.
+
+Day-5: Responsive Design
+Responsive Implementation
+
+• Used percentage-based widths
+• Applied basic media queries
+• Tested mobile responsiveness
+
+Expected Outcome: Build responsive layouts adaptable to different screen sizes.
+Actual Outcome: Implemented responsive design techniques ensuring proper display across desktop and mobile devices.
+
+Day-6: JavaScript Basics
+script.js – Interactive Features
+
+• Alert on button click
+• Form validation
+• Simple calculator
+• Change text on click
+
+Expected Outcome: Introduce interactivity to webpages using basic JavaScript functions and event handling.
+Actual Outcome: Successfully implemented interactive features including alerts, validation logic, calculator functionality, and dynamic content updates.
+
+Day-7: Mini Frontend Project
+Folder: Week3_Frontend_Project
+
+Includes:
+• Home Page
+• Registration Page
+• Login Page
+• Contact Page
+
+Expected Outcome: Integrate HTML, CSS, and JavaScript concepts into a complete mini frontend project.
+Actual Outcome: Successfully developed a multi-page responsive website demonstrating structured layout, styling consistency, and basic interactivity.
