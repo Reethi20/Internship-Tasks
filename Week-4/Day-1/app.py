@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Welcome! My Flask Internship Project is Live."
+    return "Welcome to the Flask app!!"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
