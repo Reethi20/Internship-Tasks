@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body { font-family: Arial; }
+        .top { width: 80%; margin: 20px auto; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        a { margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <h2>Welcome {{ username }}</h2>
+    <a href="/add">Add Fruit</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Fruit</th>
+        <th>Quantity (kg)</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+
+    {% for fruit in fruits %}
+    <tr>
+        <td>{{ fruit.id }}</td>
+        <td>{{ fruit.fruit_name }}</td>
+        <td>{{ fruit.quantity }}</td>
+        <td>{{ fruit.price }}</td>
+        <td>
+            <a href="/update/{{ fruit.id }}">Update</a>
+            <a href="/delete/{{ fruit.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
