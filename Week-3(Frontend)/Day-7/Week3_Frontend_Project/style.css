@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff5f8;
+    color: #333;
+}
+
+header {
+    background: #f8c8dc;
+    padding: 25px;
+    text-align: center;
+}
+
+header h1 {
+    color: #b03060;
+    font-size: 28px;
+}
+
+nav {
+    background: #f4a6c1;
+    text-align: center;
+    padding: 12px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 60%;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #b03060;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 10px 20px;
+    background: #b03060;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #d45d8c;
+}
+
+footer {
+    background: #f8c8dc;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    color: #b03060;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}

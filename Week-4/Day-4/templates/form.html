@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration</title>
+</head>
+<body style="font-family: Arial; background-color: #f4f4f4; text-align: center;">
+
+    <div style="width: 400px; margin: 50px auto; padding: 20px; 
+                background: white; border-radius: 8px; 
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+
+        <h2 style="color: #333;">Register for Event</h2>
+
+        <form action="/register" method="POST">
+
+            <label>Name:</label><br>
+            <input type="text" name="name" required
+                   style="width: 90%; padding: 8px; margin: 5px;"><br><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="email" required
+                   style="width: 90%; padding: 8px; margin: 5px;"><br><br>
+
+            <label>Select Event:</label><br>
+            <select name="event" required
+                    style="width: 95%; padding: 8px; margin: 5px;">
+                <option value="">-- Choose Event --</option>
+                <option value="Python Workshop">Python Workshop</option>
+                <option value="Web Development Bootcamp">Web Development Bootcamp</option>
+                <option value="AI & Machine Learning Seminar">AI & Machine Learning Seminar</option>
+                <option value="Cyber Security Conference">Cyber Security Conference</option>
+            </select><br><br>
+
+            <button type="submit"
+                    style="background-color: #007BFF; color: white;
+                           padding: 10px 20px; border: none;
+                           border-radius: 5px; cursor: pointer;">
+                Register
+            </button>
+
+        </form>
+    </div>
+
+</body>
+</html>
