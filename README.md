@@ -326,3 +326,78 @@ Includes:
 
 Expected Outcome: Integrate HTML, CSS, and JavaScript concepts into a complete mini frontend project.
 Actual Outcome: Successfully developed a multi-page responsive website demonstrating structured layout, styling consistency, and basic interactivity.
+
+Week-4: Backend Development (Flask & Database)
+
+Focus: Backend development using Flask framework, database integration, and CRUD operations.
+
+Day-1: Flask Application Setup
+
+app.py – Basic Flask Application
+
+Expected Outcome:
+Understand the structure of a Flask application and successfully create a basic web server with route handling.
+
+Actual Outcome:
+Successfully created a functional Flask application with properly defined routes and server execution flow.
+
+Day-2: Templates & Routing
+
+templates/index.html – Dynamic HTML Rendering
+
+Expected Outcome:
+Integrate frontend templates with backend logic using Flask’s render_template functionality.
+
+Actual Outcome:
+Successfully connected backend routes to HTML templates and displayed dynamic content using Jinja templating.
+
+Day-3: Forms Handling & POST Methods
+
+Form Handling Implementation
+
+Expected Outcome:
+Capture user input using HTML forms and process data using GET and POST methods in Flask.
+
+Actual Outcome:
+Successfully implemented form submission handling and processed user data securely using Flask request methods.
+
+Day-4: Database Integration (SQLite)
+
+database.py – Database Connection Setup
+models / table creation scripts
+
+Expected Outcome:
+Establish connection between Flask application and SQLite database and create required tables.
+
+Actual Outcome:
+Successfully connected Flask application with SQLite database and implemented structured table creation logic.
+
+Day-5: CRUD Operations
+
+Create, Read, Update, Delete functionality
+
+Expected Outcome:
+Implement full CRUD operations to manage user or student records dynamically through backend logic.
+
+Actual Outcome:
+Successfully developed complete CRUD functionality with proper database interaction and data persistence.
+
+Day-6: User Authentication (If Implemented)
+
+Login & Registration System
+
+Expected Outcome:
+Implement user authentication system with validation and secure data handling.
+
+Actual Outcome:
+Successfully built login and registration functionality with proper route protection and credential validation.
+
+Day-7: Final Integrated Backend Project
+
+Full Backend System Integration
+
+Expected Outcome:
+Combine routing, templates, database, and CRUD operations into a fully functional backend application.
+
+Actual Outcome:
+Successfully developed a complete backend-driven web application demonstrating structured architecture, database integration, and dynamic content handling.
