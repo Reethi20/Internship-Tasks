@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fruit Shop Management</title>
+    <title>Login - Fruit Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Fruit Shop Management</h1>
-
-    <div class="form-box">
-        <input type="text" id="name" placeholder="Fruit Name">
-        <input type="number" id="quantity" placeholder="Quantity (kg)">
-        <input type="number" id="price" placeholder="Price">
-        <button onclick="addFruit()">Add Fruit</button>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Fruit</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="fruitTable"></tbody>
-    </table>
+<div class="card">
+    <h2>Fruit Shop Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="message"></p>
+    <p>No account? <a href="register.html">Register</a></p>
 </div>
 
 <script src="script.js"></script>
