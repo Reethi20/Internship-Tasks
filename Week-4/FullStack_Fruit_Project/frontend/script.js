@@ -66,14 +66,16 @@ async function loadFruits(){
         if(role === "owner"){
             action = `<button onclick="deleteFruit(${fruit.id})">Delete</button>`;
         } else {
-            action = `<input type="number" id="qty${fruit.id}" placeholder="Qty">
-                      <button onclick="addToBasket(${fruit.id})">Add</button>`;
+            action = `
+                <input type="number" id="qty${fruit.id}" placeholder="Qty" style="width:60px;">
+                <button onclick="addToBasket(${fruit.id})">Add</button>
+            `;
         }
 
         table.innerHTML += `
         <tr>
             <td>${fruit.name}</td>
-            <td>${fruit.price}</td>
+            <td>₹ ${fruit.price}</td>
             <td>${fruit.quantity}</td>
             <td>${action}</td>
         </tr>`;
@@ -118,7 +120,7 @@ async function addToBasket(id){
         body: JSON.stringify({fruit_id:id,quantity:qty})
     });
 
-    alert("Added to basket");
+    loadBasket();
 }
 
 async function loadBasket(){
@@ -127,13 +129,34 @@ async function loadBasket(){
     });
 
     const data = await res.json();
+
     let html = "";
+
     data.items.forEach(item=>{
-        html += `${item.name} - Qty: ${item.quantity} - Subtotal: ₹${item.subtotal}<br>`;
+        html += `
+            <div>
+                <strong>${item.name}</strong><br>
+                Quantity: ${item.quantity}<br>
+                Price: ₹${item.price}<br>
+                Subtotal: ₹${item.subtotal}<br>
+                <button onclick="removeFromBasket(${item.id})">Remove</button>
+                <hr>
+            </div>
+        `;
     });
 
-    html += `<h4>Total: ₹${data.total}</h4>`;
+    html += `<div class="total-box">Total: ₹ ${data.total}</div>`;
+
     document.getElementById("basketData").innerHTML = html;
+}
+
+async function removeFromBasket(id){
+    await fetch(`${API}/remove_from_basket/${id}`, {
+        method: "DELETE",
+        headers: {"Authorization": getToken()}
+    });
+
+    loadBasket();
 }
 
 if(window.location.pathname.includes("dashboard.html")){
