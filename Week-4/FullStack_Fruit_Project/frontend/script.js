@@ -1,9 +1,9 @@
 const API = "https://fullstack-fruit-project.onrender.com";
 
-let basket = [];
-
-function saveToken(token){
+function saveToken(token, role, username){
     localStorage.setItem("token", token);
+    localStorage.setItem("role", role);
+    localStorage.setItem("username", username);
 }
 
 function getToken(){
@@ -11,59 +11,29 @@ function getToken(){
 }
 
 function logout(){
-    localStorage.removeItem("token");
-    alert("Logged out successfully");
+    localStorage.clear();
     window.location.href = "index.html";
 }
 
-function showAlert(message){
-    alert(message);
-}
-
-function validEmail(email){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
 async function register(){
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("reg_email").value.trim();
-    const password = document.getElementById("reg_password").value.trim();
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("reg_email").value;
+    const password = document.getElementById("reg_password").value;
+    const role = document.getElementById("role").value;
 
-    if(!username || !email || !password){
-        return showAlert("All fields are required");
-    }
-
-    if(!validEmail(email)){
-        return showAlert("Enter valid email");
-    }
-
-    if(password.length < 5){
-        return showAlert("Password must be at least 5 characters");
-    }
-
-    const res = await fetch(`${API}/register`, {
+    await fetch(`${API}/register`, {
         method: "POST",
         headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({username,email,password})
+        body: JSON.stringify({username,email,password,role})
     });
 
-    const data = await res.json();
-
-    if(data.message){
-        showAlert("Registration successful");
-        window.location.href = "index.html";
-    } else {
-        showAlert(data.error);
-    }
+    alert("Registered successfully");
+    window.location.href = "index.html";
 }
 
 async function login(){
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    if(!email || !password){
-        return showAlert("All fields are required");
-    }
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
     const res = await fetch(`${API}/login`, {
         method: "POST",
@@ -74,95 +44,115 @@ async function login(){
     const data = await res.json();
 
     if(data.token){
-        saveToken(data.token);
-        showAlert("Login successful");
+        saveToken(data.token, data.role, data.username);
         window.location.href = "dashboard.html";
     } else {
-        showAlert(data.error);
+        alert(data.error);
     }
 }
 
 async function loadFruits(){
-    const res = await fetch(`${API}/fruits`, {
-        headers: {"Authorization": getToken()}
-    });
-
-    if(res.status === 401){
-        showAlert("Session expired. Login again.");
-        return logout();
-    }
-
+    const res = await fetch(`${API}/fruits`);
     const data = await res.json();
+
     const table = document.getElementById("fruitTable");
     table.innerHTML = "";
 
+    const role = localStorage.getItem("role");
+
     data.forEach(fruit=>{
+        let action = "";
+
+        if(role === "owner"){
+            action = `<button onclick="deleteFruit(${fruit.id})">Delete</button>`;
+        } else {
+            action = `<input type="number" id="qty${fruit.id}" placeholder="Qty">
+                      <button onclick="addToBasket(${fruit.id})">Add</button>`;
+        }
+
         table.innerHTML += `
         <tr>
             <td>${fruit.name}</td>
-            <td>${fruit.quantity}</td>
             <td>${fruit.price}</td>
-            <td>
-                <button onclick="deleteFruit(${fruit.id})">Delete</button>
-            </td>
-            <td>
-                <button onclick="addToBasket(${fruit.price})">Add</button>
-            </td>
+            <td>${fruit.quantity}</td>
+            <td>${action}</td>
         </tr>`;
     });
 }
 
 async function addFruit(){
-    const name = document.getElementById("fruit_name").value.trim();
-    const quantity = document.getElementById("quantity").value;
-    const price = document.getElementById("price").value;
+    const name = document.getElementById("fruit_name").value;
+    const price = document.getElementById("fruit_price").value;
+    const quantity = document.getElementById("fruit_quantity").value;
 
-    if(!name || !quantity || !price){
-        return showAlert("All fruit fields are required");
-    }
-
-    if(quantity <= 0 || price <= 0){
-        return showAlert("Quantity and price must be positive");
-    }
-
-    await fetch(`${API}/add`, {
+    await fetch(`${API}/add_fruit`, {
         method: "POST",
         headers: {
             "Content-Type":"application/json",
             "Authorization": getToken()
         },
-        body: JSON.stringify({name,quantity,price})
+        body: JSON.stringify({name,price,quantity})
     });
 
-    showAlert("Fruit added successfully");
     loadFruits();
 }
 
 async function deleteFruit(id){
-    if(!confirm("Are you sure you want to delete this fruit?")){
-        return;
-    }
-
-    await fetch(`${API}/delete/${id}`, {
+    await fetch(`${API}/delete_fruit/${id}`, {
         method: "DELETE",
         headers: {"Authorization": getToken()}
     });
 
-    showAlert("Fruit deleted");
     loadFruits();
 }
 
-function addToBasket(price){
-    basket.push(Number(price));
-    let total = basket.reduce((sum,val)=> sum+val,0);
-    document.getElementById("total").innerText = total;
+async function addToBasket(id){
+    const qty = document.getElementById("qty"+id).value;
+
+    await fetch(`${API}/add_to_basket`, {
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json",
+            "Authorization": getToken()
+        },
+        body: JSON.stringify({fruit_id:id,quantity:qty})
+    });
+
+    alert("Added to basket");
+}
+
+async function loadBasket(){
+    const res = await fetch(`${API}/view_basket`, {
+        headers: {"Authorization": getToken()}
+    });
+
+    const data = await res.json();
+    let html = "";
+    data.items.forEach(item=>{
+        html += `${item.name} - Qty: ${item.quantity} - Subtotal: ₹${item.subtotal}<br>`;
+    });
+
+    html += `<h4>Total: ₹${data.total}</h4>`;
+    document.getElementById("basketData").innerHTML = html;
 }
 
 if(window.location.pathname.includes("dashboard.html")){
     if(!getToken()){
-        showAlert("Please login first");
         window.location.href = "index.html";
-    } else {
-        loadFruits();
     }
+
+    document.getElementById("welcome").innerText =
+        "Welcome " + localStorage.getItem("username");
+
+    const role = localStorage.getItem("role");
+
+    if(role === "owner"){
+        document.getElementById("ownerSection").style.display = "block";
+        document.getElementById("actionHeader").innerText = "Action";
+    } else {
+        document.getElementById("basketSection").style.display = "block";
+        document.getElementById("actionHeader").innerText = "Select";
+    }
+
+    loadFruits();
 }

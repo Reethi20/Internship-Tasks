@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - Fruit Shop</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="topbar">
-    <h2>Fruit Dashboard</h2>
+    <h2 id="welcome"></h2>
     <button onclick="logout()">Logout</button>
 </div>
 
-<div class="form-section">
+<div id="ownerSection" style="display:none;">
+    <h3>Add Fruit</h3>
     <input type="text" id="fruit_name" placeholder="Fruit Name">
-    <input type="number" id="quantity" placeholder="Quantity">
-    <input type="number" id="price" placeholder="Price">
-    <button onclick="addFruit()">Add Fruit</button>
+    <input type="number" id="fruit_price" placeholder="Price">
+    <input type="number" id="fruit_quantity" placeholder="Quantity">
+    <button onclick="addFruit()">Add</button>
 </div>
 
 <table>
     <thead>
         <tr>
             <th>Name</th>
-            <th>Quantity</th>
             <th>Price</th>
-            <th>Actions</th>
-            <th>Basket</th>
+            <th>Quantity</th>
+            <th id="actionHeader"></th>
         </tr>
     </thead>
     <tbody id="fruitTable"></tbody>
 </table>
 
-<div class="basket">
-    <h3>Basket Total: ₹ <span id="total">0</span></h3>
+<div id="basketSection" style="display:none;">
+    <h3>Basket</h3>
+    <button onclick="loadBasket()">View Basket</button>
+    <div id="basketData"></div>
 </div>
 
 <script src="script.js"></script>
