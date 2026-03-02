@@ -1,4 +1,4 @@
-const API = "https://YOUR_RENDER_URL.onrender.com";
+const API = "https://fullstack-fruit-project.onrender.com";
 
 async function loadFruits() {
     const res = await fetch(`${API}/fruits`);
