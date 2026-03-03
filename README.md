@@ -401,3 +401,47 @@ Combine routing, templates, database, and CRUD operations into a fully functiona
 
 Actual Outcome:
 Successfully developed a complete backend-driven web application demonstrating structured architecture, database integration, and dynamic content handling.
+
+Final Project: Fruit Store Management System (Multi-Owner System)
+
+A complete backend-driven web application built using Flask and SQLite that allows multiple shop owners to manage their own fruit stores independently while customers can view fruits and manage their basket.
+
+Project Components
+
+app.py – Main Flask Application
+• Implemented route handling
+• Integrated templates with backend logic
+• Managed request and response cycle
+
+database.py – Database Configuration
+• Established SQLite database connection
+• Structured table creation for owners and fruits
+
+CRUD Operations Implementation
+• Add fruits
+• View fruit list
+• Update fruit prices
+• Delete fruits
+
+Multi-Owner Logic
+• Each owner manages their own store
+• Data isolation between different store owners
+
+Basket System
+• Customers can add fruits to basket
+• Display total price calculation
+
+Expected Outcome:
+
+• Integrate Flask routing, templates, database connectivity, and CRUD operations into a fully functional web application.
+• Design a structured multi-owner system where each store operates independently.
+• Implement dynamic data rendering between frontend and backend.
+• Develop a real-world mini project demonstrating backend development skills.
+
+Actual Outcome:
+
+• Successfully developed a complete multi-owner Fruit Store Management System using Flask and SQLite.
+• Implemented full CRUD operations with proper database interaction and data persistence.
+• Achieved seamless integration between frontend templates and backend logic.
+• Built a structured and organized backend architecture demonstrating practical understanding of web development concepts.
+• Successfully prepared the project for deployment.
